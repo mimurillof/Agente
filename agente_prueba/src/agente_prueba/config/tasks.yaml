@@ -1,0 +1,38 @@
+# src/latest_ai_development/config/tasks.yaml
+# src/agente_prueba/config/tasks.yaml
+research_task:
+  description: >
+    Investiga y encuentra los 5 avances más recientes y significativos en 'Agentes de IA' 
+    anunciados o publicados en los últimos 3 meses, considerando que estamos en 2025.
+    
+    INSTRUCCIONES ESPECÍFICAS:
+    1. DEBES usar la herramienta de búsqueda web (brave_web_search) para cada búsqueda
+    2. Realiza al menos 3 búsquedas diferentes para encontrar información actualizada
+    3. Para cada avance encontrado, verifica la fecha de publicación usando la herramienta
+    4. No confíes en tu conocimiento previo, toda la información debe venir de las búsquedas web
+    5. Incluye las fuentes de donde obtuviste la información
+    
+    El tema específico es: ultimo modelo de IA lanzado por google.
+  expected_output: >
+    Una lista con viñetas de los 5 avances más recientes sobre el tema, con:
+    1. Título del avance
+    2. Fecha de publicación
+    3. Breve descripción
+    4. Fuente de la información
+    5. URL de la fuente (si está disponible)
+    
+    Toda la información debe provenir EXCLUSIVAMENTE de las búsquedas web realizadas.
+  agent: researcher
+
+reporting_task:
+  description: >
+    Analiza la información recopilada por el investigador y crea un reporte detallado y bien estructurado 
+    que presente los hallazgos de manera clara y profesional.
+  expected_output: >
+    Un reporte completo en formato markdown que incluya:
+    1. Resumen ejecutivo
+    2. Hallazgos principales
+    3. Análisis detallado de cada avance
+    4. Conclusiones y recomendaciones
+  agent: reporting_analyst
+  output_file: "output/report.md"
