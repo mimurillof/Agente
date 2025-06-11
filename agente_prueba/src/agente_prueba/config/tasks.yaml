@@ -1,38 +1,59 @@
 # src/latest_ai_development/config/tasks.yaml
 # src/agente_prueba/config/tasks.yaml
-research_task:
+financial_research_task:
   description: >
-    Investiga y encuentra los 5 avances más recientes y significativos en 'Agentes de IA' 
-    anunciados o publicados en los últimos 3 meses, considerando que estamos en 2025.
+    Realizar un análisis financiero completo del tema solicitado por el usuario.
     
     INSTRUCCIONES ESPECÍFICAS:
-    1. DEBES usar la herramienta de búsqueda web (brave_web_search) para cada búsqueda
-    2. Realiza al menos 3 búsquedas diferentes para encontrar información actualizada
-    3. Para cada avance encontrado, verifica la fecha de publicación usando la herramienta
-    4. No confíes en tu conocimiento previo, toda la información debe venir de las búsquedas web
+    1. DEBES usar las herramientas de búsqueda web para encontrar noticias financieras recientes
+    2. DEBES usar las herramientas financieras (Yahoo Finance) para obtener datos de precios, ratios y métricas
+    3. Realiza al menos 3-5 búsquedas diferentes para obtener información diversa
+    4. Para cada empresa o activo analizado, obtén:
+       - Precio actual y variación reciente
+       - Noticias relevantes de los últimos 30 días
+       - Datos fundamentales (P/E, market cap, volumen, etc.)
+       - Análisis de competidores si aplica
     5. Incluye las fuentes de donde obtuviste la información
+    6. Verifica fechas de publicación para asegurar información actualizada
     
-    El tema específico es: ultimo modelo de IA lanzado por google.
+    El tema a investigar será proporcionado por el usuario.
   expected_output: >
-    Una lista con viñetas de los 5 avances más recientes sobre el tema, con:
-    1. Título del avance
-    2. Fecha de publicación
-    3. Breve descripción
-    4. Fuente de la información
-    5. URL de la fuente (si está disponible)
+    Un análisis financiero detallado que incluya:
+    1. Resumen ejecutivo del análisis
+    2. Datos de precios y rendimiento reciente
+    3. Noticias y eventos relevantes
+    4. Métricas financieras clave
+    5. Análisis de tendencias
+    6. Factores de riesgo identificados
+    7. Fuentes de información utilizadas
     
-    Toda la información debe provenir EXCLUSIVAMENTE de las búsquedas web realizadas.
-  agent: researcher
+    Toda la información debe provenir EXCLUSIVAMENTE de las herramientas disponibles.
+  agent: financial_researcher
 
-reporting_task:
+financial_reporting_task:
   description: >
-    Analiza la información recopilada por el investigador y crea un reporte detallado y bien estructurado 
-    que presente los hallazgos de manera clara y profesional.
+    Crear un reporte financiero profesional y comprensivo basado en la investigación realizada.
+    El reporte debe ser útil para la toma de decisiones de inversión y debe seguir estándares
+    profesionales de análisis financiero.
   expected_output: >
-    Un reporte completo en formato markdown que incluya:
-    1. Resumen ejecutivo
-    2. Hallazgos principales
-    3. Análisis detallado de cada avance
-    4. Conclusiones y recomendaciones
-  agent: reporting_analyst
-  output_file: "output/report.md"
+    Un reporte financiero completo en formato markdown que incluya:
+    1. Resumen Ejecutivo
+    2. Análisis de Mercado
+    3. Análisis Fundamental
+       - Métricas financieras clave
+       - Comparación con competidores
+       - Fortalezas y debilidades
+    4. Análisis Técnico
+       - Tendencias de precios
+       - Niveles de soporte y resistencia
+       - Volumen de transacciones
+    5. Análisis de Noticias y Eventos
+    6. Evaluación de Riesgos
+    7. Recomendaciones de Inversión
+       - Calificación (Comprar/Mantener/Vender)
+       - Justificación de la recomendación
+       - Precio objetivo (si aplica)
+    8. Conclusiones
+    9. Anexos con fuentes y metodología
+  agent: financial_reporter
+  output_file: "output/financial_report.md"
