@@ -24,33 +24,13 @@ def run():
         ]
     )
     
+    path_to_yahoo_server = "C:/Users/mikia/mcp-tutorial/mcp_yahoo_finance.py"
+    
     # Configurar el servidor Yahoo Finance
     yahoo_server_params = StdioServerParameters(
-        command="uv",
-        args=[
-            "run",
-            "--with",
-            "mcp",
-            "--with",
-            "yfinance",
-            "mcp",
-            "run",
-            "mcp_yahoo_finance.py"
-        ],
-        env={
-            "APPDATA": "C:\\Users\\mikia\\AppData\\Roaming",
-            "HOMEDRIVE": "C:",
-            "HOMEPATH": "\\Users\\mikia",
-            "LOCALAPPDATA": "C:\\Users\\mikia\\AppData\\Local",
-            "PATH": "C:\\Users\\mikia\\AppData\\Local\\npm-cache\\_npx\\5a9d879542beca3a\\node_modules\\.bin;C:\\Users\\mikia\\mcp-tutorial\\node_modules\\.bin;C:\\Users\\mikia\\node_modules\\.bin;C:\\Users\\node_modules\\.bin;C:\\node_modules\\.bin;C:\\Program Files\\nodejs\\node_modules\\npm\\node_modules\\@npmcli\\run-script\\lib\\node-gyp-bin;C:\\Users\\mikia\\mcp-tutorial\\.venv\\Scripts;C:\\Users\\mikia\\bin;C:\\Program Files\\Git\\mingw64\\bin;C:\\Program Files\\Git\\usr\\local\\bin;C:\\Program Files\\Git\\usr\\bin;C:\\Program Files\\Git\\usr\\bin;C:\\Program Files\\Git\\mingw64\\bin;C:\\Program Files\\Git\\usr\\bin;C:\\Users\\mikia\\bin;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0;C:\\WINDOWS\\System32\\OpenSSH;C:\\Program Files\\Git\\cmd;C:\\Program Files\\nodejs;C:\\Program Files\\Docker\\Docker\\resources\\bin;C:\\Users\\mikia\\AppData\\Local\\Programs\\cursor\\resources\\app\\bin;C:\\Program Files\\NVIDIA Corporation\\NVIDIA App\\NvDLISR;C:\\Users\\mikia\\.local\\bin;C:\\Users\\mikia\\AppData\\Local\\Programs\\Trae\\bin;C:\\Users\\mikia\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\mikia\\AppData\\Local\\Programs\\Microsoft VS Code\\bin;C:\\Users\\mikia\\AppData\\Local\\GitHubDesktop\\bin;C:\\Users\\mikia\\AppData\\Roaming\\npm;C:\\Users\\mikia\\AppData\\Local\\Programs\\cursor\\resources\\app\\bin;C:\\Program Files\\Git\\usr\\bin\\vendor_perl;C:\\Program Files\\Git\\usr\\bin\\core_perl",
-            "PROCESSOR_ARCHITECTURE": "AMD64",
-            "SYSTEMDRIVE": "C:",
-            "SYSTEMROOT": "C:\\WINDOWS",
-            "TEMP": "C:\\Users\\mikia\\AppData\\Local\\Temp",
-            "USERNAME": "mikia",
-            "USERPROFILE": "C:\\Users\\mikia",
-            **os.environ
-        }
+        command="python",
+        args=[path_to_yahoo_server], # Pasamos la ruta correcta como argumento
+        env=dict(os.environ)
     )
 
     # Usar ambos servidores MCP - inicializamos con el servidor principal (Exa)
@@ -95,9 +75,9 @@ def run():
                         process=Process.sequential,
                         verbose=True
                     )                    # Ejecutar el crew
-                    print("\nIniciando el análisis financiero...")
+                    print("/nIniciando el análisis financiero...")
                     result = crew.kickoff()
-                    print("\n\nResultado final del Análisis Financiero:")
+                    print("/n/nResultado final del Análisis Financiero:")
                     print(result)
                     
             except Exception as yahoo_error:
@@ -139,9 +119,9 @@ def run():
                     process=Process.sequential,
                     verbose=True
                 )                # Ejecutar el crew
-                print("\nIniciando el análisis financiero (solo con Exa)...")
+                print("/nIniciando el análisis financiero (solo con Exa)...")
                 result = crew.kickoff()
-                print("\n\nResultado final del Análisis Financiero:")
+                print("/n/nResultado final del Análisis Financiero:")
                 print(result)
 
     except Exception as e:
